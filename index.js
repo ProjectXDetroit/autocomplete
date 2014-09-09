@@ -264,6 +264,7 @@ Autocomplete.prototype._position = function(el) {
  *
  * @param {Function} fn
  * @param {String} query
+ * @param {Object} err
  * @param {Object} res
  * @return {Autocomplete}
  * @api private
