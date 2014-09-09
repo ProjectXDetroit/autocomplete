@@ -269,7 +269,7 @@ Autocomplete.prototype._position = function(el) {
  * @api private
  */
 
-Autocomplete.prototype.respond = function(fn, query, res) {
+Autocomplete.prototype.respond = function(fn, query, err, res) {
   if(!res.ok) {
     this.emit('error', res.text);
     fn(res.text);
