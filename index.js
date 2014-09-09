@@ -303,7 +303,7 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
   menu.el.addClass('autocomplete');
 
   // Reset the menu
-  this.menu.hide().clear().off('select');
+  this.menu.hide().value('').off('select');
 
   labels.forEach(function(label, i) {
     var value = values[i];
