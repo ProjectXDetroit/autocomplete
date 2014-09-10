@@ -308,10 +308,6 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
   labels.forEach(function(label, i) {
     var value = values[i];
     menu.add(value, format(label, query));
-    menu.on(value, function() {
-      el.value = label;
-      el.focus();
-    });
   });
 
   // Pass select event onto autocomplete
