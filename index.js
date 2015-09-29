@@ -211,7 +211,7 @@ Autocomplete.prototype.search = function(fn) {
       url = this.url,
       headers = this.headers,
       val = encodeURIComponent(this.el.value),
-      rkey = new RegExp(':' + this._key);
+      rkey = new RegExp(':' + this._key),
       query = {};
 
   if(!val) {
