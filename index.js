@@ -287,12 +287,13 @@ Autocomplete.prototype._position = function(el) {
  *
  * @param {Function} fn
  * @param {String} query
+ * @param {Object} err
  * @param {Object} res
  * @return {Autocomplete}
  * @api private
  */
 
-Autocomplete.prototype.respond = function(fn, query, res) {
+Autocomplete.prototype.respond = function(fn, query, err, res) {
   if(!res.ok) {
     this.emit('error', res.text);
     fn(res.text);
@@ -325,15 +326,11 @@ Autocomplete.prototype.respond = function(fn, query, res) {
   classes(menu.el).add('autocomplete');
 
   // Reset the menu
-  this.menu.hide().clear().off('select');
+  this.menu.hide().off('select');
 
   labels.forEach(function(label, i) {
     var value = values[i];
     menu.add(value, format(label, query));
-    menu.on(value, function() {
-      el.value = label;
-      el.focus();
-    });
   });
 
   // Pass select event onto autocomplete
