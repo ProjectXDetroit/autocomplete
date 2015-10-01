@@ -1,7 +1,7 @@
 {
   "name": "autocomplete",
-  "version": "0.1.0",
-  "description": "Autocomplete component",
+  "version": "0.2.0",
+  "description": "Autocomplete component with minimal dependencies",
   "main": "test/server.js",
   "directories": {
     "test": "test"
@@ -15,7 +15,7 @@
   },
   "keywords": [
     "autocomplete",
-    "component",
+    "module",
     "ui"
   ],
   "author": "Matt Mueller <mattmuelle@gmail.com>",
@@ -24,7 +24,17 @@
     "url": "https://github.com/MatthewMueller/autocomplete/issues"
   },
   "dependencies": {
-    "express": "~3.3.4",
-    "duo": "0.x"
+    "component-classes": "^1.2.4",
+    "component-emitter": "^1.2.0",
+    "component-event": "^0.1.4",
+    "component-menu": "^1.0.0",
+    "map-component": "0.0.1",
+    "properjs-throttle": "^0.2.0",
+    "superagent": "^1.4.0",
+    "to-function": "^2.0.6"
+  },
+  "devDependencies": {
+    "browserify": "^11.2.0",
+    "express": "^4.13.3"
   }
 }

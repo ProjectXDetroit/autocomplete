@@ -1,12 +1,12 @@
 # autocomplete
 
-  Autocomplete component
+  Autocomplete component forked to npm module for browserify
 
 ![autocomplete](http://f.cl.ly/items/1X2L2Y3P3t2d1p411W3Y/autocomplete.png)
 
 ## Installation
 
-    $ component install matthewmueller/autocomplete
+    $ npm install brautocomplete
 
 ## Example
 
@@ -188,9 +188,9 @@ autocomplete.position(function(el) {
 })
 ```
 
-## Test
+## Example
 
-    $ make test
+    $ make example
     $ open http://localhost:7000
 
 ## License

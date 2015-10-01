@@ -18,7 +18,7 @@ app.get('/search/:query', function(req, res) {
 });
 
 app.get('/', function(req, res) {
-  res.sendfile(join(__dirname, 'test.html'));
+  res.sendFile(join(__dirname, 'test.html'));
 });
 
 app.listen(7000, function() {

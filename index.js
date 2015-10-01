@@ -2,15 +2,15 @@
  * Module dependencies
  */
 
-var throttle = require('throttle'),
-    classes = require('classes'),
-    event = require('event'),
-    toFunction = require('to-function'),
-    map = require('map'),
-    Menu = require('menu'),
-    Emitter = require('emitter'),
-    request = require('superagent'),
-    noop = function() {};
+var Emitter = require('component-emitter');
+var classes = require('component-classes');
+var event = require('component-event');
+var request = require('superagent');
+var throttle = require('properjs-throttle');
+var toFunction = require('to-function');
+var map = require('map-component');
+var Menu = require('component-menu');
+var noop = function() {};
 
 /**
  * Export `Autocomplete`
@@ -337,7 +337,7 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
   menu.on('select', this.select.bind(this));
 
   // Position the menu
-  menu.moveTo(pos.x, pos.y);
+  menu.moveTo(pos.x + 'px', pos.y + 'px');
 
   // If we have items to show, show it.
   if(items.length) menu.show();

@@ -1,7 +1,7 @@
 <html>
 <head>
   <title>autocomplete component</title>
-  <link rel="stylesheet" href="/build/index.css">
+  <link rel="stylesheet" href="/index.css">
   <style type="text/css">
     input {
       width: 50%;
@@ -13,15 +13,45 @@
     img {
       width: 50%;
     }
+    
+    .menu .highlight {
+      font-weight: bold;
+      color: #4987c7;
+    }
 
     .menu {
       opacity: .75;
       border: 1px solid gray;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      margin: 0;
+      padding: 0;
+      background: white;
+      border: 1px solid rgba(0,0,0,0.2);
     }
 
-    .menu .highlight {
-      font-weight: bold;
-      color: #4987c7;
+    .menu li {
+      list-style: none;
+    }
+
+    .menu li a {
+      display: block;
+      padding: 5px 30px 5px 12px;
+      text-decoration: none;
+      border-top: 1px solid #eee;
+      color: #2e2e2e;
+      outline: none;
+    }
+
+    .menu li:first-child a {
+      border-top: none;
+    }
+
+    .menu li a:hover,
+    .menu li.selected a {
+      background: #f1faff;
     }
 
   </style>

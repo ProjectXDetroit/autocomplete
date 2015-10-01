@@ -3,13 +3,14 @@ example: build
 	node test/server.js
 
 build: node_modules
-	@./node_modules/.bin/duo -g autocomplete index.{css,js} build
+	mkdir -p build
+	@./node_modules/.bin/browserify index.js -d --s autocomplete > build/index.js
 
 node_modules: package.json
-	@npm install
+	@npm install -d
 	touch node_modules
 
 clean:
-	rm -fr build components node_modules template.js
+	rm -fr build node_modules
 
 .PHONY: test clean build
