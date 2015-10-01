@@ -326,11 +326,15 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
   classes(menu.el).add('autocomplete');
 
   // Reset the menu
-  this.menu.hide().off('select');
+  this.menu.hide().clear().off('select');
 
   labels.forEach(function(label, i) {
     var value = values[i];
     menu.add(value, format(label, query));
+    menu.on(value, function() {
+      el.value = label;
+      el.focus();
+    });
   });
 
   // Pass select event onto autocomplete
