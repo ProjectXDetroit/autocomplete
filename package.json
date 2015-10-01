@@ -32,5 +32,8 @@
     "properjs-throttle": "^0.2.0",
     "superagent": "^1.4.0",
     "to-function": "^2.0.6"
-  }
+  },
+  "devDependencies": {
+    "browserify": "^11.2.0",
+    "express": "^4.13.3"
 }
