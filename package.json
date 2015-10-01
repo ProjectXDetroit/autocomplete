@@ -2,7 +2,7 @@
   "name": "autocomplete",
   "version": "0.2.0",
   "description": "Autocomplete component with minimal dependencies",
-  "main": "test/server.js",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
