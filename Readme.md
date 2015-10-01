@@ -6,7 +6,7 @@
 
 ## Installation
 
-    $ npm install brautocomplete
+    $ npm install git://github.com/bendik/autocomplete
 
 ## Example
 
