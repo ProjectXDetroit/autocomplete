@@ -332,7 +332,6 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
     var value = values[i];
     menu.add(value, format(label, query));
     menu.on(value, function() {
-      el.value = label;
       el.focus();
     });
   });
