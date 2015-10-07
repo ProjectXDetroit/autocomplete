@@ -74,6 +74,7 @@ Autocomplete.prototype.enable = function() {
 
 Autocomplete.prototype.disable = function() {
   this.emit('disabled');
+  this.menu.clear().hide()
   event.unbind(this.el, 'keyup', this.throttledSearch);
   return this;
 };
