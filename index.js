@@ -303,6 +303,7 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
 
   var parser = toFunction(this._parse || function(obj) { return obj; }),
       items = parser(res.body);
+  var counts = res.body.aggregations;
 
   if(!isArray(items)) throw new Error('autocomplete: response is not an array');
 
@@ -329,6 +330,13 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
   // Reset the menu
   this.menu.hide().clear().off('select');
 
+  for (var key in counts) {
+    if (counts[key].length) {
+      var category = counts[key][0];
+      category.name = key.toUpperCase();
+      menu.add(category, format(category, query));
+    }
+  }
   labels.forEach(function(label, i) {
     var value = values[i];
     menu.add(value, format(label, query));
