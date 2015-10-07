@@ -210,7 +210,7 @@ Autocomplete.prototype.search = function(fn) {
   var self = this,
       url = this.url,
       headers = this.headers,
-      val = encodeURIComponent(this.el.value),
+      val = this.el.value,
       rkey = new RegExp(':' + this._key),
       query = {};
 
