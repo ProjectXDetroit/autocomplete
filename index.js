@@ -216,7 +216,7 @@ Autocomplete.prototype.search = function(fn) {
       query = {};
 
   if(!val) {
-    if(this.menu) this.menu.hide();
+    if(this.menu) this.menu.hide().clear();
     return this;
   }
 
@@ -277,8 +277,9 @@ Autocomplete.prototype._position = function(el) {
   var coords = getOffset(el),
       x = coords.left,
       y = coords.top + el.offsetHeight;
+      w = coords.width
 
-  return { x : x, y : y };
+  return { x : x, y : y, w: w };
 };
 
 /**
@@ -349,7 +350,7 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
   menu.on('select', this.select.bind(this));
 
   // Position the menu
-  menu.moveTo(pos.x + 'px', pos.y + 'px');
+  menu.moveTo(pos.x + 'px', pos.y + 'px', pos.w + 'px');
 
   // If we have items to show, show it.
   if(items.length) menu.show();
@@ -387,5 +388,5 @@ function getOffset( el ) {
         _y += el.offsetTop - el.scrollTop;
         el = el.offsetParent;
     }
-    return { top: _y, left: _x };
+    return { top: _y, left: _x, width: el.offsetWidth };
 }
