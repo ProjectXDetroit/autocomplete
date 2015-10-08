@@ -330,13 +330,6 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
   // Reset the menu
   this.menu.hide().clear().off('select');
 
-  for (var key in counts) {
-    if (counts[key].length) {
-      var category = counts[key][0];
-      category.name = key.toUpperCase();
-      menu.add(category, format(category, query));
-    }
-  }
   labels.forEach(function(label, i) {
     var value = values[i];
     menu.add(value, format(label, query));
@@ -345,6 +338,13 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
     });
   });
 
+  for (var key in counts) {
+    if (counts[key].length) {
+      var category = counts[key][0];
+      category.name = key;
+      menu.add(category, format(category, query));
+    }
+  }
   // Pass select event onto autocomplete
   menu.on('select', this.select.bind(this));
 
