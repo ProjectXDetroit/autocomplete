@@ -276,8 +276,8 @@ Autocomplete.prototype.position = function(fn) {
 Autocomplete.prototype._position = function(el) {
   var coords = getOffset(el),
       x = coords.left,
-      y = coords.top + el.offsetHeight;
-      w = coords.width
+      y = coords.top + el.offsetHeight,
+      w = coords.width;
 
   return { x : x, y : y, w: w };
 };
