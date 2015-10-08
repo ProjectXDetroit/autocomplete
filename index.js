@@ -383,10 +383,12 @@ function isArray (arr) {
 function getOffset( el ) {
     var _x = 0;
     var _y = 0;
+    var _w = 0;
     while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
         _x += el.offsetLeft - el.scrollLeft;
         _y += el.offsetTop - el.scrollTop;
+        _w += el.offsetWidth
         el = el.offsetParent;
     }
-    return { top: _y, left: _x, width: el.offsetWidth };
+    return { top: _y, left: _x, width: _w };
 }
