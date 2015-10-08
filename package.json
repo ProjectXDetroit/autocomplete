@@ -27,7 +27,7 @@
     "component-classes": "^1.2.4",
     "component-emitter": "^1.2.0",
     "component-event": "^0.1.4",
-    "component-menu": "^1.0.0",
+    "component-menu": "git://github.com/projectxdetroit/menu.git",
     "map-component": "0.0.1",
     "properjs-throttle": "^0.2.0",
     "superagent": "^1.4.0",
@@ -37,6 +37,6 @@
     "browserify": "^11.2.0",
     "express": "^4.13.3"
   }
-  
-  
+
+
 }
