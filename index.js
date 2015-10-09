@@ -28,7 +28,6 @@ function Autocomplete(el, url, opts) {
   opts = opts || {};
 
   this.el = el;
-  this.coords = getOffset(el);
   this.url = url;
   this._when = false;
   this._display = true;
@@ -252,37 +251,6 @@ Autocomplete.prototype.select = function(value) {
 };
 
 /**
- * Customize the position of the `Menu`
- *
- * @param  {Function} fn
- * @return {Autocomplete}
- * @api public
- */
-
-Autocomplete.prototype.position = function(fn) {
-  this._position = fn;
-  return this;
-};
-
-/**
- * Default positioning of the `Menu`. May be overwritten
- * to provide custom positioning logic
- *
- * @param {Node} el
- * @return {Object}
- * @api private
- */
-
-Autocomplete.prototype._position = function(el) {
-  var coords = getOffset(el),
-      x = coords.left,
-      y = coords.top + el.offsetHeight,
-      w = coords.width;
-
-  return { x : x, y : y, w: w };
-};
-
-/**
  * #respond(res)
  *
  * Handles the superagent response
@@ -322,8 +290,7 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
       values = map(items, this._value),
       len = labels.length,
       menu = this.menu = this.menu || new Menu,
-      format = this.formatter,
-      pos = this._position(this.el);
+      format = this.formatter;
 
   // Add `autocomplete` class to menu
   classes(menu.el).add('autocomplete');
@@ -348,9 +315,6 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
   // Pass select event onto autocomplete
   menu.on('select', this.select.bind(this));
 
-  // Position the menu
-  menu.moveTo(0, pos.y + 'px', pos.w + 'px');
-
   // If we have items to show, show it.
   if(items.length) menu.show();
 
@@ -369,23 +333,4 @@ function isArray (arr) {
   return (Array.isArray)
     ? Array.isArray(arr)
     : Object.prototype.toString.call(arr) === "[object Array]";
-}
-
-/**
- * Cross-browser way to get element offset
- *
- * @param  {Node} el
- * @return {Object}
- * @api private
- */
-
-function getOffset( el ) {
-    var _x = 0;
-    var _y = el.offsetHeight;
-    var _w = el.offsetWidth;
-    while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
-        _x += el.offsetLeft - el.scrollLeft;
-        el = el.offsetParent;
-    }
-    return { top: _y, left: _x, width: _w };
 }
