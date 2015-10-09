@@ -327,7 +327,7 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
 
   // Add `autocomplete` class to menu
   classes(menu.el).add('autocomplete');
-
+  this.el.parentNode.appendChild(this.menu.el);
   // Reset the menu
   this.menu.hide().clear().off('select');
 
@@ -338,7 +338,6 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
       el.focus();
     });
   });
-
   for (var key in counts) {
     if (counts[key].length) {
       var category = counts[key][0];
@@ -350,7 +349,7 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
   menu.on('select', this.select.bind(this));
 
   // Position the menu
-  menu.moveTo(pos.x + 'px', pos.y + 'px', pos.w + 'px');
+  menu.moveTo(0, pos.y + 'px', pos.w + 'px');
 
   // If we have items to show, show it.
   if(items.length) menu.show();
@@ -382,11 +381,10 @@ function isArray (arr) {
 
 function getOffset( el ) {
     var _x = 0;
-    var _y = 0;
+    var _y = el.offsetHeight;
     var _w = el.offsetWidth;
     while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
         _x += el.offsetLeft - el.scrollLeft;
-        _y += el.offsetTop - el.scrollTop;
         el = el.offsetParent;
     }
     return { top: _y, left: _x, width: _w };
