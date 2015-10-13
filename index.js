@@ -317,6 +317,7 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
 
   // If we have items to show, show it.
   if(items.length) menu.show();
+  this.emit('updated');
 
   return this;
 };
