@@ -304,13 +304,12 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
       el.focus();
     });
   });
-  
+
   // Pass select event onto autocomplete
   menu.on('select', this.select.bind(this));
 
   // If we have items to show, show it.
   if(items.length) menu.show();
-  this.emit('updated');
 
   return this;
 };
