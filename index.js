@@ -199,6 +199,7 @@ Autocomplete.prototype.when = function(filter) {
 
 Autocomplete.prototype.search = function(fn) {
   if(fn && (fn.keyCode == 13 || fn.keyCode == 27)) return this;
+  else if(fn && (fn.keyCode == 38 || fn.keyCode == 40)) return this;
   else if(typeof fn !== 'function') fn = noop;
 
   // filter out invalid results
@@ -300,11 +301,7 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
   labels.forEach(function(label, i) {
     var value = values[i];
     menu.add(value, format(label, query));
-    menu.on(value, function() {
-      el.focus();
-    });
   });
-
   // Pass select event onto autocomplete
   menu.on('select', this.select.bind(this));
 
