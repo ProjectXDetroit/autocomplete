@@ -11,6 +11,7 @@ var toFunction = require('to-function');
 var map = require('map-component');
 var Menu = require('component-menu');
 var noop = function() {};
+var $ = window.jQuery;
 
 /**
  * Export `Autocomplete`
@@ -33,9 +34,10 @@ function Autocomplete(el, url, opts) {
   this._display = true;
   this.throttle = opts.throttle || 200;
   this.headers = opts.headers || {};
+  this.type = opts.type || {};
   this.throttledSearch = throttle(this.search.bind(this), this.throttle);
   this._key = el.getAttribute('name');
-  this.formatter = function(item) { return item; };
+  // Dont delete: this.formatter = function(item) { return item; };
 
   // Prevents the native autocomplete from showing up
   this.el.setAttribute('autocomplete', 'off');
@@ -271,8 +273,14 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
     return this;
   }
 
-  var parser = toFunction(this._parse || function(obj) { return obj; }),
-      items = parser(res.body);
+  var parser = toFunction(this._parse || function(obj) { return obj; });
+  if (isArray(res.body)) {
+    // if tag result array
+    var items = res.body;
+  } else {
+    // if people result object
+    var items = parser(res.body);
+  }
 
   if(!isArray(items)) throw new Error('autocomplete: response is not an array');
 
@@ -289,7 +297,7 @@ Autocomplete.prototype.respond = function(fn, query, err, res) {
       labels = map(items, this._label),
       values = map(items, this._value),
       len = labels.length,
-      menu = this.menu = this.menu || new Menu,
+      menu = this.menu = this.menu || new Menu(this.type),
       format = this.formatter;
 
   // Add `autocomplete` class to menu
